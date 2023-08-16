@@ -46,7 +46,7 @@ void test1() {
 void test2(){
     showCommands();
     int id,  nNights;
-    Guest myGuest;
+    Guest* myGuest;
     Hotel hotel( "Houston", "Near the park", "154616546516" );
     string name, phoneNumber, comand;
     cin >> comand;
@@ -54,12 +54,12 @@ void test2(){
         system("cls");
         if ( comand == "reserveRoom" ){
             cin >> id >> name >> phoneNumber >> nNights;
-            myGuest = Guest( name, phoneNumber );
-            hotel.reserveRoom( id, myGuest , nNights);
+            myGuest = new Guest( name, phoneNumber );
+            hotel.reserveRoom( id, *myGuest , nNights);
         } else if ( comand == "reserveAnyRoom" ){
             cin >> name >> phoneNumber;
-            myGuest = Guest( name, phoneNumber );
-            hotel.reserveAnyRoom( myGuest, nNights );
+            myGuest = new Guest( name, phoneNumber );
+            hotel.reserveAnyRoom( *myGuest, nNights );
         } else if ( comand == "freeRoom" ){
             cin >> id;
             hotel.freeRoom( id );
